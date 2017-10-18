@@ -16,11 +16,6 @@ Requires:       ros-kinetic-genlisp
 Requires:       ros-kinetic-genmsg
 Requires:       ros-kinetic-genpy
 
-%define         ros_distro kinetic
-%define         ros_root /opt/ros
-%define         install_path %{ros_root}/%{ros_distro}
-%define         src_name message_generation
-
 %description
 Package modeling the build-time dependencies for generating language bindings of
 messages.
@@ -36,8 +31,8 @@ cp %{SOURCE1001} .
 if [ -f "/usr/setup.sh" ]; then . "/usr/setup.sh"; fi
 mkdir build && cd build
 cmake .. \
-        -DCMAKE_INSTALL_PREFIX="%{install_path}" \
-        -DCMAKE_PREFIX_PATH="%{install_path}" \
+        -DCMAKE_INSTALL_PREFIX="$CMAKE_PREFIX_PATH" \
+        -DCMAKE_PREFIX_PATH="$CMAKE_PREFIX_PATH" \
         -DSETUPTOOLS_DEB_LAYOUT=OFF \
         -DCATKIN_BUILD_BINARY_PACKAGE="1" \
 
